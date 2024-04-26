@@ -6,7 +6,7 @@ import { FaPlus, FaMinus, FaAddressCard, FaTrashAlt } from 'react-icons/fa';
 import AddressCard from './AddressCard';
 import AddressForm from './Addressform';
 import { Toaster, toast } from 'react-hot-toast';
-export const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
+export const BASE_URL = 'https://jsonplaceholder.typicode.com/use';
 
 const BillingAddressForm = () => {
   const [showForm, setShowForm] = useState(false);
@@ -33,6 +33,7 @@ const BillingAddressForm = () => {
   };
 
   const toggleForm = () => {
+    setSelectedAddress(null);
     setShowForm(!showForm);
   };
 
@@ -100,6 +101,7 @@ const BillingAddressForm = () => {
         </Icon>
         {showForm ? 'Dismiss Form' : 'Add New Address'}
       </Button>
+      {showForm && <AddressForm onFormSubmit={handleFormSubmit} onCancel={() => setShowForm(false)} />}
       {selectedAddress && (
         <SelectedAddressContainer>
           <h3>Selected Address</h3>
@@ -110,7 +112,7 @@ const BillingAddressForm = () => {
           </DeleteButton> */}
         </SelectedAddressContainer>
       )}
-      {showForm && <AddressForm onFormSubmit={handleFormSubmit} onCancel={() => setShowForm(false)} />}
+      
       <h4>Or Use Saved Addresses</h4>
       <SavedAddresses>
         {savedAddresses.map((address) => (
@@ -130,6 +132,7 @@ const BillingAddressForm = () => {
 
 const Container = styled.div`
   width: 50%;
+  height: 100vh;
   border: 1px solid #ccc;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -149,9 +152,16 @@ const Icon = styled.span`
   margin-right: 10px;
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  border:1px;
+  :hover {
+    background-color: #f9f9f9;
+  }
 `;
 
 const SelectedAddressContainer = styled.div`
