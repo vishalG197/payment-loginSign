@@ -104,6 +104,7 @@ const PaymentMethod = () => {
                     )}
                 <SubmitButton onClick={validatePayment}>Make Payment</SubmitButton>
             </PaymentForm>
+
         </MainContainer>
     );
 };
@@ -112,6 +113,7 @@ export default PaymentMethod;
 
 const MainContainer = styled.div`
     width: 50%;
+
     background-color: #f9f9f9;
 
     padding: 30px;
@@ -125,6 +127,22 @@ const ErrorMessage = styled.p`
 `;
 const PaymentForm = styled.div`   
     margin:auto; 
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ErrorMessage = styled.p`
+    color: red;
+    font-size: 0.8em;
+    margin-top: -15px;  
+    margin-bottom:10px;      
+`;
+
+const PaymentForm = styled.div`
+
     background-color: #f9f9f9;
     padding: 30px;
     border-radius: 10px;
@@ -139,8 +157,8 @@ const PaymentHeader = styled.h2`
 `;
 
 const CardOptions = styled.div`
-    
 
+    
     label {
         display: block;
         margin-bottom: 10px;
@@ -154,7 +172,7 @@ const CardOptions = styled.div`
 `;
 
 const InputLabel = styled.p`
-    /* font-weight: bold; */
+
     font-size: 14px;
     margin-top: 10px;
     margin-bottom: 2px;
